@@ -1,15 +1,15 @@
 //
-//  MyTodoListTests.swift
-//  MyTodoListTests
+//  CheckItOffTests.swift
+//  CheckItOffTests
 //
-//  Created by Robinson Prada Mejia on 02/02/17.
+//  Created by Robinson Prada Mejia on 03/02/17.
 //  Copyright © 2017 AlexandrePy. All rights reserved.
 //
 
 import XCTest
-@testable import MyTodoList
+@testable import CheckItOff
 
-class MyTodoListTests: XCTestCase {
+class CheckItOffTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

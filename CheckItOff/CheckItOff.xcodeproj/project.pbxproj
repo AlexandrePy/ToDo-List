@@ -1,0 +1,545 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C39D47081E44E03A00851EDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D47071E44E03A00851EDD /* AppDelegate.swift */; };
+		C39D470A1E44E03A00851EDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D47091E44E03A00851EDD /* ViewController.swift */; };
+		C39D470D1E44E03A00851EDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39D470B1E44E03A00851EDD /* Main.storyboard */; };
+		C39D47101E44E03A00851EDD /* CheckItOff.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C39D470E1E44E03A00851EDD /* CheckItOff.xcdatamodeld */; };
+		C39D47121E44E03A00851EDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C39D47111E44E03A00851EDD /* Assets.xcassets */; };
+		C39D47151E44E03A00851EDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39D47131E44E03A00851EDD /* LaunchScreen.storyboard */; };
+		C39D47201E44E03A00851EDD /* CheckItOffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D471F1E44E03A00851EDD /* CheckItOffTests.swift */; };
+		C39D472B1E44E03A00851EDD /* CheckItOffUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D472A1E44E03A00851EDD /* CheckItOffUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C39D471C1E44E03A00851EDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C39D46FC1E44E03A00851EDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C39D47031E44E03A00851EDD;
+			remoteInfo = CheckItOff;
+		};
+		C39D47271E44E03A00851EDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C39D46FC1E44E03A00851EDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C39D47031E44E03A00851EDD;
+			remoteInfo = CheckItOff;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C39D47041E44E03A00851EDD /* CheckItOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckItOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C39D47071E44E03A00851EDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C39D47091E44E03A00851EDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C39D470C1E44E03A00851EDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C39D470F1E44E03A00851EDD /* CheckItOff.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CheckItOff.xcdatamodel; sourceTree = "<group>"; };
+		C39D47111E44E03A00851EDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C39D47141E44E03A00851EDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C39D47161E44E03A00851EDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C39D471B1E44E03A00851EDD /* CheckItOffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckItOffTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C39D471F1E44E03A00851EDD /* CheckItOffTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItOffTests.swift; sourceTree = "<group>"; };
+		C39D47211E44E03A00851EDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C39D47261E44E03A00851EDD /* CheckItOffUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckItOffUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C39D472A1E44E03A00851EDD /* CheckItOffUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckItOffUITests.swift; sourceTree = "<group>"; };
+		C39D472C1E44E03A00851EDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C39D47011E44E03A00851EDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C39D47181E44E03A00851EDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C39D47231E44E03A00851EDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C39D46FB1E44E03A00851EDD = {
+			isa = PBXGroup;
+			children = (
+				C39D47061E44E03A00851EDD /* CheckItOff */,
+				C39D471E1E44E03A00851EDD /* CheckItOffTests */,
+				C39D47291E44E03A00851EDD /* CheckItOffUITests */,
+				C39D47051E44E03A00851EDD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C39D47051E44E03A00851EDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C39D47041E44E03A00851EDD /* CheckItOff.app */,
+				C39D471B1E44E03A00851EDD /* CheckItOffTests.xctest */,
+				C39D47261E44E03A00851EDD /* CheckItOffUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C39D47061E44E03A00851EDD /* CheckItOff */ = {
+			isa = PBXGroup;
+			children = (
+				C39D47071E44E03A00851EDD /* AppDelegate.swift */,
+				C39D47091E44E03A00851EDD /* ViewController.swift */,
+				C39D470B1E44E03A00851EDD /* Main.storyboard */,
+				C39D47111E44E03A00851EDD /* Assets.xcassets */,
+				C39D47131E44E03A00851EDD /* LaunchScreen.storyboard */,
+				C39D47161E44E03A00851EDD /* Info.plist */,
+				C39D470E1E44E03A00851EDD /* CheckItOff.xcdatamodeld */,
+			);
+			path = CheckItOff;
+			sourceTree = "<group>";
+		};
+		C39D471E1E44E03A00851EDD /* CheckItOffTests */ = {
+			isa = PBXGroup;
+			children = (
+				C39D471F1E44E03A00851EDD /* CheckItOffTests.swift */,
+				C39D47211E44E03A00851EDD /* Info.plist */,
+			);
+			path = CheckItOffTests;
+			sourceTree = "<group>";
+		};
+		C39D47291E44E03A00851EDD /* CheckItOffUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C39D472A1E44E03A00851EDD /* CheckItOffUITests.swift */,
+				C39D472C1E44E03A00851EDD /* Info.plist */,
+			);
+			path = CheckItOffUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C39D47031E44E03A00851EDD /* CheckItOff */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C39D472F1E44E03A00851EDD /* Build configuration list for PBXNativeTarget "CheckItOff" */;
+			buildPhases = (
+				C39D47001E44E03A00851EDD /* Sources */,
+				C39D47011E44E03A00851EDD /* Frameworks */,
+				C39D47021E44E03A00851EDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CheckItOff;
+			productName = CheckItOff;
+			productReference = C39D47041E44E03A00851EDD /* CheckItOff.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C39D471A1E44E03A00851EDD /* CheckItOffTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C39D47321E44E03A00851EDD /* Build configuration list for PBXNativeTarget "CheckItOffTests" */;
+			buildPhases = (
+				C39D47171E44E03A00851EDD /* Sources */,
+				C39D47181E44E03A00851EDD /* Frameworks */,
+				C39D47191E44E03A00851EDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C39D471D1E44E03A00851EDD /* PBXTargetDependency */,
+			);
+			name = CheckItOffTests;
+			productName = CheckItOffTests;
+			productReference = C39D471B1E44E03A00851EDD /* CheckItOffTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C39D47251E44E03A00851EDD /* CheckItOffUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C39D47351E44E03A00851EDD /* Build configuration list for PBXNativeTarget "CheckItOffUITests" */;
+			buildPhases = (
+				C39D47221E44E03A00851EDD /* Sources */,
+				C39D47231E44E03A00851EDD /* Frameworks */,
+				C39D47241E44E03A00851EDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C39D47281E44E03A00851EDD /* PBXTargetDependency */,
+			);
+			name = CheckItOffUITests;
+			productName = CheckItOffUITests;
+			productReference = C39D47261E44E03A00851EDD /* CheckItOffUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C39D46FC1E44E03A00851EDD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = AlexandrePy;
+				TargetAttributes = {
+					C39D47031E44E03A00851EDD = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					C39D471A1E44E03A00851EDD = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C39D47031E44E03A00851EDD;
+					};
+					C39D47251E44E03A00851EDD = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C39D47031E44E03A00851EDD;
+					};
+				};
+			};
+			buildConfigurationList = C39D46FF1E44E03A00851EDD /* Build configuration list for PBXProject "CheckItOff" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C39D46FB1E44E03A00851EDD;
+			productRefGroup = C39D47051E44E03A00851EDD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C39D47031E44E03A00851EDD /* CheckItOff */,
+				C39D471A1E44E03A00851EDD /* CheckItOffTests */,
+				C39D47251E44E03A00851EDD /* CheckItOffUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C39D47021E44E03A00851EDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C39D47151E44E03A00851EDD /* LaunchScreen.storyboard in Resources */,
+				C39D47121E44E03A00851EDD /* Assets.xcassets in Resources */,
+				C39D470D1E44E03A00851EDD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C39D47191E44E03A00851EDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C39D47241E44E03A00851EDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C39D47001E44E03A00851EDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C39D470A1E44E03A00851EDD /* ViewController.swift in Sources */,
+				C39D47101E44E03A00851EDD /* CheckItOff.xcdatamodeld in Sources */,
+				C39D47081E44E03A00851EDD /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C39D47171E44E03A00851EDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C39D47201E44E03A00851EDD /* CheckItOffTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C39D47221E44E03A00851EDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C39D472B1E44E03A00851EDD /* CheckItOffUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C39D471D1E44E03A00851EDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C39D47031E44E03A00851EDD /* CheckItOff */;
+			targetProxy = C39D471C1E44E03A00851EDD /* PBXContainerItemProxy */;
+		};
+		C39D47281E44E03A00851EDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C39D47031E44E03A00851EDD /* CheckItOff */;
+			targetProxy = C39D47271E44E03A00851EDD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C39D470B1E44E03A00851EDD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C39D470C1E44E03A00851EDD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C39D47131E44E03A00851EDD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C39D47141E44E03A00851EDD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C39D472D1E44E03A00851EDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C39D472E1E44E03A00851EDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C39D47301E44E03A00851EDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CheckItOff/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = aleandre.proy.CheckItOff;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C39D47311E44E03A00851EDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CheckItOff/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = aleandre.proy.CheckItOff;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		C39D47331E44E03A00851EDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CheckItOffTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = aleandre.proy.CheckItOffTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CheckItOff.app/CheckItOff";
+			};
+			name = Debug;
+		};
+		C39D47341E44E03A00851EDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CheckItOffTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = aleandre.proy.CheckItOffTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CheckItOff.app/CheckItOff";
+			};
+			name = Release;
+		};
+		C39D47361E44E03A00851EDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = CheckItOffUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = aleandre.proy.CheckItOffUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = CheckItOff;
+			};
+			name = Debug;
+		};
+		C39D47371E44E03A00851EDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = CheckItOffUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = aleandre.proy.CheckItOffUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = CheckItOff;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C39D46FF1E44E03A00851EDD /* Build configuration list for PBXProject "CheckItOff" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C39D472D1E44E03A00851EDD /* Debug */,
+				C39D472E1E44E03A00851EDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C39D472F1E44E03A00851EDD /* Build configuration list for PBXNativeTarget "CheckItOff" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C39D47301E44E03A00851EDD /* Debug */,
+				C39D47311E44E03A00851EDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C39D47321E44E03A00851EDD /* Build configuration list for PBXNativeTarget "CheckItOffTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C39D47331E44E03A00851EDD /* Debug */,
+				C39D47341E44E03A00851EDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C39D47351E44E03A00851EDD /* Build configuration list for PBXNativeTarget "CheckItOffUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C39D47361E44E03A00851EDD /* Debug */,
+				C39D47371E44E03A00851EDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C39D470E1E44E03A00851EDD /* CheckItOff.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C39D470F1E44E03A00851EDD /* CheckItOff.xcdatamodel */,
+			);
+			currentVersion = C39D470F1E44E03A00851EDD /* CheckItOff.xcdatamodel */;
+			path = CheckItOff.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C39D46FC1E44E03A00851EDD /* Project object */;
+}

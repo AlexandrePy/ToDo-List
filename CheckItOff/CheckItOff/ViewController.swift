@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  MyTodoList
+//  CheckItOff
 //
-//  Created by Robinson Prada Mejia on 02/02/17.
+//  Created by Robinson Prada Mejia on 03/02/17.
 //  Copyright © 2017 AlexandrePy. All rights reserved.
 //
 
