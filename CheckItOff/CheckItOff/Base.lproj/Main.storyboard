@@ -192,9 +192,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkedTask" width="256" height="256"/>
-        <image name="highlightedTask" width="256" height="256"/>
-        <image name="uncheckedTask" width="256" height="256"/>
+        <image name="checkedTask" width="32" height="32"/>
+        <image name="highlightedTask" width="32" height="32"/>
+        <image name="uncheckedTask" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Wfh-qJ-cZV"/>
