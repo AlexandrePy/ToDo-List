@@ -41,9 +41,6 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         // Enable the Save button only if the text field has a valid Task name
         updateSaveButtonState()
         
-        /*// Notification observer
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateTextView(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateTextView(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)*/
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -72,7 +69,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     //MARK: UITextViewDelegate
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.backgroundColor = UIColor.lightGray
+        textView.backgroundColor = UIColor(red: 200.0/255.0, green: 240.0/255.0, blue: 203.0/255.0, alpha: 255.0)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -82,21 +79,6 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         return textView.text.characters.count + (text.characters.count - range.length) <= 200
     }
-    
-    /*func updateTextView(notification:Notification) {
-        let userInfo = notification.userInfo!
-        
-        let keyboardEndFrameScreenCordinates = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let keyboardEndFrame = self.view.convert(keyboardEndFrameScreenCordinates, to: view.window)
-        
-        if notification.name == Notification.Name.UIKeyboardWillHide {
-            descriptionTextView.contentInset = UIEdgeInsets.zero
-        } else {
-            descriptionTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardEndFrame.height, right: 0)
-            descriptionTextView.scrollIndicatorInsets = descriptionTextView.contentInset
-        }
-        descriptionTextView.scrollRangeToVisible(descriptionTextView.selectedRange)
-    }*/
     
     //MARK: Navigation
     
