@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TaskViewController.swift
 //  CheckItOff
 //
 //  Created by Alexandre Proy on 07/02/17.
@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import os.log
 
-class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class TaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var taskNameLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var taskDescriptionLabel: UILabel!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    /*
+     This value is either passed by `TaskTableViewController`in `prepare(for:sender:)`or constructed as part of adding a new task
+     */
+    var task: Task?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +30,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         
         // Handle the text view's user input through delegate callbacks
         descriptionTextView.delegate = self
+        
+        // Set up views if editing an existing Task
+        if let task = task {
+            navigationItem.title = task.myName
+            nameTextField.text = task.myName
+            descriptionTextView.text = task.myDescription
+        }
+        
+        // Enable the Save button only if the text field has a valid Task name
+        updateSaveButtonState()
         
         /*// Notification observer
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateTextView(notification:)), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
@@ -37,6 +53,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     
     //MARK: UITextFieldDelegate
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing
+        saveButton.isEnabled = false
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard
         textField.resignFirstResponder()
@@ -44,7 +65,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        taskNameLabel.text = textField.text
+        updateSaveButtonState()
+        navigationItem.title = nameTextField.text
     }
     
     //MARK: UITextViewDelegate
@@ -76,8 +98,48 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         descriptionTextView.scrollRangeToVisible(descriptionTextView.selectedRange)
     }*/
     
-    //MARK: Actions
+    //MARK: Navigation
     
+    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+        
+        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways
+        let isPresentingInAddTaskMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddTaskMode {
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The TaskViewController is not inside a navigation controller")
+        }
+        
+    }
+    
+    // This method lets you configure a view controller before it's presented
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        let name = nameTextField.text ?? ""
+        let description = descriptionTextView.text
+        
+        // Set the task to be passed to TaskTableViewController after the unwind segue
+        task = Task(aName: name, aDescription: description, aState: false)
+    }
+    
+    //MARK: Private Methods
+    
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
 
 
 }

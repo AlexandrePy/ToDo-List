@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  CheckItOff
 //
-//  Created by Robinson Prada Mejia on 07/02/17.
+//  Created by Alexandre Proy on 07/02/17.
 //  Copyright © 2017 AlexandrePy. All rights reserved.
 //
 

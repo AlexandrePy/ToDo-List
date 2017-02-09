@@ -11,26 +11,26 @@ import XCTest
 
 class CheckItOffTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    //MARK: Test Class Tests
+    
+    // Confirm that the Task initializer returns a Task object when passed valid parameters
+    func testTaskInitializiationSucceeds() {
+        
+        // No description
+        let noDescriptionTask = Task.init(name: "noDescription", description: nil)
+        XCTAssertNotNil(noDescriptionTask)
+    
+        // With a description
+        let aDescriptionTask = Task.init(name: "aDescription", description: "I do have a description.")
+        XCTAssertNotNil(aDescriptionTask)
+        
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    // Confirm that the Task initializer returns nil when passed an empty name
+    func testTaskInitializationFails() {
+        // No name
+        let noNameTask = Task.init(name: "", description: nil)
+        XCTAssertNil(noNameTask)
     }
     
 }
