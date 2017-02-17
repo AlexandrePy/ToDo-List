@@ -7,30 +7,39 @@
 //
 
 import UIKit
+import CoreData
 import os.log
 
 class TaskTableViewController: UITableViewController, CheckButtonPressedDelegate {
 
     //MARK: Properties
     
-    var tasks = [Task]()
+    var list: NSManagedObject!
+    var tasks: [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Use the edit button item provided by the table view controller
-        navigationItem.leftBarButtonItem = editButtonItem
+        setToolbarItems([editButtonItem], animated: true)
         
-        // Handle the user's tap on checkButton through delegate callbacks
+        navigationItem.title = list.value(forKey: "eName") as? String
         
-        // Load any saved tasks, otherwise load sample data
-        if let savedTasks = loadTasks() {
-            tasks += savedTasks
-        } else {
-            // Load sample data
+        fetchTasks()
+        
+        if tasks.isEmpty {
             loadSampleTasks()
         }
     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        // We fetch the task of the corresponding list
+        fetchTasks()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,10 +69,12 @@ class TaskTableViewController: UITableViewController, CheckButtonPressedDelegate
         // Fetches the appropriate task for the data source layout
         let task = tasks[indexPath.row]
         
-        cell.nameLabel.text = task.myName
-        cell.checkButton.isSelected = task.myState
+        cell.nameLabel.text = task.value(forKey: "eName") as? String
+        cell.checkButton.isSelected = (task.value(forKey: "eState") as? Bool)!
+        
+        // Handle the user's tap on checkButton through delegate callbacks
         cell.delegate = self
-
+        
         return cell
     }
 
@@ -77,29 +88,24 @@ class TaskTableViewController: UITableViewController, CheckButtonPressedDelegate
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tasks.remove(at: indexPath.row)
-            saveTasks()
+            removeTask(pos: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
 
-    /*
-    // Override to support rearranging the table view.
+
+    /*// Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
     }
-    */
 
-    /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
+    }*/
     
     // MARK: - Navigation
 
@@ -127,7 +133,8 @@ class TaskTableViewController: UITableViewController, CheckButtonPressedDelegate
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            let selectedTask = tasks[indexPath.row]
+            let selT = tasks[indexPath.row]
+            let selectedTask = Task(aName: selT.value(forKey: "eName") as! String, aDescription: selT.value(forKey: "eDescription") as! String?, aState: (selT.value(forKey: "eState") as? Bool)!)
             taskDetailViewController.task = selectedTask
             
         default:
@@ -139,10 +146,14 @@ class TaskTableViewController: UITableViewController, CheckButtonPressedDelegate
     //MARK: CheckButtonPressedDelegate
     
     func userDidTapCheckButton(_ sender: TaskTableViewCell) {
+        
         let selectedIndexPath = tableView.indexPath(for: sender)
-        tasks[(selectedIndexPath?.row)!].myState = !tasks[(selectedIndexPath?.row)!].myState
-        tableView.reloadRows(at: [selectedIndexPath!], with: .none)
-        saveTasks()
+        
+        // We update the state of the task
+        let bState = !(tasks[(selectedIndexPath?.row)!].value(forKey: "eState") as! Bool)
+        updateTask(eState: bState, pos: (selectedIndexPath?.row)!)
+        
+        tableView.reloadData()
     }
     
     
@@ -155,59 +166,175 @@ class TaskTableViewController: UITableViewController, CheckButtonPressedDelegate
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 
                 // Update an existing task
-                tasks[selectedIndexPath.row] = task
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                self.updateTask(eName: task.myName, eDescription: task.myDescription, pos: selectedIndexPath.row)
                 
             } else {
                 
                 // Add a new task
-                let newIndexPath = IndexPath(row: tasks.count,section:0)
-                tasks.append(task)
-                tableView.insertRows(at: [newIndexPath], with: .automatic)
-
+                self.addTask(eName: task.myName, eDescription: task.myDescription, eState: task.myState, eMyEntity: list.value(forKey: "eName") as! String)
+                
             }
             
-            // Save the tasks
-            saveTasks()
+            tableView.reloadData()
       
         }
         
     }
     
+    
     //MARK: Private Methods
     
+    
+    // Used to a new task and save it
+    private func addTask(eName: String, eDescription: String?, eState: Bool, eMyEntity: String) {
+        
+        print("-- saving task: \(eName) --")
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        // We get the context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // We create a new List entity
+        let entity = NSEntityDescription.entity(forEntityName: "CDTask", in: managedContext)!
+        
+        let task = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        // We set its values
+        task.setValue(eName, forKeyPath: "eName")
+        task.setValue(eDescription, forKeyPath: "eDescription")
+        task.setValue(eState, forKeyPath: "eState")
+        task.setValue(eMyEntity, forKey: "eMyEntity")
+        
+        // We test if everything went well and add the new list to the lists
+        do {
+            try managedContext.save()
+            tasks.append(task)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        print("---------------")
+    }
+    
+    
+    // Used to update an already existing task and save the changes
+    func updateTask(eName: String, eDescription: String?, pos: Int) {
+        
+        print("-- updating task: \(eName)")
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        // We get the context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // We update the values that changed
+        tasks[pos].setValue(eName, forKey: "eName")
+        tasks[pos].setValue(eDescription, forKey: "eDescription")
+        
+        // We test if everything went well and save the changes to the list
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        print("---------------")
+    }
+    
+    // Used to update the state of a task when the check button is tapped
+    func updateTask(eState: Bool, pos: Int) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        // We get the context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // We update the state
+        tasks[pos].setValue(eState, forKey: "eState")
+        
+        // We test if everything went well and save the changes to the list
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
+    // Used to remove a task from the list
+    func removeTask(pos: Int) {
+        
+        print("-- removing task: \(tasks[pos].value(forKey: "eName") as? String) --")
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        // We get the context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // We test if everything went well and remove the list at pos from the lists
+        do {
+            managedContext.delete(tasks.remove(at: pos))
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not remove task: \(tasks[pos].value(forKey: "eName")). \(error), \(error.userInfo)")
+        }
+        
+        print("---------------")
+        
+    }
+    
+    // Used to fetch all the tasks of a given list, done everytime we arrive on this view
+    func fetchTasks() {
+        
+        print("-- fetching tasks --")
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        // We get the context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // Fetch request
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDTask")
+        
+            // Predicate
+        let predicate = NSPredicate(format: "%K == %@", "eMyEntity", list.value(forKey: "eName") as! String)
+        fetchRequest.predicate = predicate
+        
+        // We test if everything went well and get the lists
+        do {
+            tasks = try managedContext.fetch(fetchRequest)
+            for task in tasks {
+                if let name = task.value(forKey: "eName"), let desc = task.value(forKey: "eDescription"), let entty = task.value(forKey: "eMyEntity") {
+                    print("\(name) / \(desc) / \(entty)")
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        print("----------------")
+    }
+    
     private func loadSampleTasks() {
-        
-        guard let task1 = Task(aName: "Eggs", aDescription: "buy 10 farm eggs", aState: false) else {
-            fatalError("Unable to instantiate task1")
-        }
     
-        guard let task2 = Task(aName: "Milk", aDescription: "buy 10 Galleons of whole milk", aState: false) else {
-            fatalError("Unable to instantiate task2")
-        }
-        
-        guard let task3 = Task(aName: "Coffee", aDescription: "buy 2 boxes of Colombian coffee", aState: false) else {
-            fatalError("Unable to instantiate task3")
-        }
-        
-        tasks += [task1,task2,task3]
-        
-    }
-    
-    private func saveTasks() {
-        
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(tasks, toFile: Task.ArchiveURL.path)
-        
-        if isSuccessfulSave {
-            os_log("Tasks successfully saved.", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Failed to save tasks", log: OSLog.default, type: .debug)
+        if (list.value(forKey: "eName") as? String) == "Groceries" {
+            addTask(eName: "Eggs", eDescription: "Buy 10 farm eggs", eState: false, eMyEntity: "Groceries")
+            addTask(eName: "Milk", eDescription: "Buy 3 galleons of whole milk", eState: false, eMyEntity: "Groceries")
+            addTask(eName: "Peanut butter", eDescription: "Buy 2 jars", eState: false, eMyEntity: "Groceries")
+        } else if (list.value(forKey: "eName") as? String) == "Trip to Boston" {
+            addTask(eName: "Buy plane tickets", eDescription: "From the 18/02 to the 25/02", eState: false, eMyEntity: "Trip to Boston")
+            addTask(eName: "Book hotel room", eDescription: "At the Mandarin Oriental, for two, on the 22nd", eState: false, eMyEntity: "Trip to Boston")
         }
         
     }
-    
-    private func loadTasks() -> [Task]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Task.ArchiveURL.path) as? [Task]
-    }
-
+ 
 }

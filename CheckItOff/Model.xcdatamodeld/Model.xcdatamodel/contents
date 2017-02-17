@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G31" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDList" representedClassName="CDList" syncable="YES" codeGenerationType="class">
+        <attribute name="eName" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CDTask" representedClassName="CDTask" syncable="YES" codeGenerationType="class">
+        <attribute name="eDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eMyEntity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eName" attributeType="String" syncable="YES"/>
+        <attribute name="eState" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDTask" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="CDList" positionX="-344" positionY="-27" width="128" height="58"/>
+    </elements>
+</model>
